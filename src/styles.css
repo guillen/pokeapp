@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+/* BASICS */
+@import 'styles/grid.css';
+@import 'styles/colors.css';
+@import 'styles/utl.css';
+
+/* ELEMENTS */
+@import 'styles/forms.css';
+@import 'styles/tables.css';
+
+/* COMPONENTS */
+@import 'styles/card.css';

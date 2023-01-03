@@ -1,1 +1,23 @@
-<p>pokemons works!</p>
+<main class="container">
+    <section class="row">
+        <h4>Listado de Pokemon</h4>
+    </section>
+    <section class="row">
+        <div class="col-6 mb-2">
+            <app-search-input></app-search-input>
+        </div>
+        <div class="col-6 text-right">
+            <button class="btn btn-blue"><i class="icon icon-plus icon-white"></i> Nuevo</button>
+        </div>
+    </section>
+    <section class="row mb-2">
+        <div class="col-12">
+            <app-table-info></app-table-info>
+        </div>
+    </section>
+    <section class="row mb-2">
+        <div class="col-12">
+            <app-create-update-card></app-create-update-card>
+        </div>
+    </section>
+</main>

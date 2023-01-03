@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { HomeTitleComponent } from './components/home-title/home-title.component';
 import { ROUTE_NAMES } from './core/constants/route-names';
 

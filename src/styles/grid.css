@@ -1,0 +1,18 @@
+.container {
+    position: relative;
+    width: 80%;
+    left: 10%;
+}
+
+.row {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-12 {
+    width: 100%;
+}
