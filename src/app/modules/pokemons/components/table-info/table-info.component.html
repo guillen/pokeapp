@@ -9,11 +9,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Ivysaur</td>
-            <td>img</td>
-            <td>65</td>
-            <td>38</td>
+        <tr *ngFor="let pokemon of pokemonList">
+            <td>{{pokemon.name}}</td>
+            <td class="text-center"><img [src]="pokemon.image" [alt]="pokemon.id + '-' + pokemon.name" width="30"></td>
+            <td class="text-right">{{pokemon.attack}}</td>
+            <td class="text-right">{{pokemon.defense}}</td>
             <td>
                 <button class="btn btn-link"><i class="icon icon-edit"></i></button>
                 <button class="btn btn-link"><i class="icon icon-delete"></i></button>
