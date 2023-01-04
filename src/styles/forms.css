@@ -16,6 +16,10 @@
     color: rgb(66, 30, 165);
 }
 
+.btn:disabled {
+    background-color: rgb(160, 160, 160);
+}
+
 
 /* INPUTS */
 .input-field {

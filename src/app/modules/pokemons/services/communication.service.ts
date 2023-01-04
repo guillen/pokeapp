@@ -17,7 +17,7 @@ export class CommunicationService {
     return this.createUpdatePokemonSubject.next(action);
   }
 
-  uodatePokemonList() {
+  updatePokemonList() {
     return this.updatePokemonListSubject.next();
   }
 }

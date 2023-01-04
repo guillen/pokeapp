@@ -28,7 +28,7 @@ export class TableInfoComponent implements OnInit {
   }
 
   showEditCard(pokemon:Pokemon) {
-    this.communicationService.showCreateUpdatePokemon({show: true, pokemon});
+    this.communicationService.showCreateUpdatePokemon({show: true, pokemon: pokemon});
   }
 
   subscribeActions() {

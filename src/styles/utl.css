@@ -68,3 +68,8 @@ p {
 .pr-3 { padding-right: 20px; }
 .pr-4 { padding-right: 25px; }
 .pr-5 { padding-right: 30px; }
+
+/* OTHERS */
+.d-none {
+    display: none;
+}

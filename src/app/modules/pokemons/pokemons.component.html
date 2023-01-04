@@ -15,9 +15,9 @@
             <app-table-info></app-table-info>
         </div>
     </section>
-    <section class="row mb-2" *ngIf="showEditUpdate">
+    <section class="row mb-2" [ngClass]="{'d-none': !showEditUpdate}">
         <div class="col-12">
-            <app-create-update-card [pokemon]="pokemon"></app-create-update-card>
+            <app-create-update-card></app-create-update-card>
         </div>
     </section>
 </main>

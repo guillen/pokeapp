@@ -2,18 +2,18 @@
     <div class="card-title">
         <h4 class="mt-1 mb-1">{{pokemon ? 'Editar' : 'Nuevo'}} Pokemon</h4>
     </div>
-    <div class="card-body">
+    <form [formGroup]="pokemonForm" (ngSubmit)="onSubmit()" class="card-body">
         <div class="row">
             <div class="col-6">
                 <table class="table table-no-border">
                     <tbody>
                         <tr>
                             <td><label for="">Nombre: </label></td>
-                            <td><input type="text" class="input-field"></td>
+                            <td><input type="text" class="input-field" formControlName="name"></td>
                         </tr>
                         <tr>
                             <td><label for="">Imagen: </label></td>
-                            <td><input type="text" class="input-field"></td>
+                            <td><input type="text" class="input-field" formControlName="image"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -23,11 +23,13 @@
                     <tbody>
                         <tr>
                             <td><label for="">Ataque: </label></td>
-                            <td><input type="range" class="range-width"></td>
+                            <td><input type="range" class="range-width" formControlName="attack" min="0" max="100"></td>
+                            <td>{{ pokemonForm.controls['attack'].value }}</td>
                         </tr>
                         <tr>
                             <td><label for="">Defensa: </label></td>
-                            <td><input type="range" class="range-width"></td>
+                            <td><input type="range" class="range-width" formControlName="defense" min="0" max="100"></td>
+                            <td>{{ pokemonForm.controls['defense'].value }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -36,9 +38,9 @@
 
         <div class="row mt-5">
             <div class="col-12 text-center">
-                <button class="btn btn-blue"><i class="icon icon-save icon-white"></i> Guardar</button> &nbsp;
-                <button class="btn btn-blue" (click)="hideCard()"><i class="icon icon-cancel icon-white"></i> Cancelar</button>
+                <button type="submit" class="btn btn-blue" [disabled]="pokemonForm.status == 'INVALID'"><i class="icon icon-save icon-white"></i> Guardar</button> &nbsp;
+                <button type="button" class="btn btn-blue" (click)="hideCard()"><i class="icon icon-cancel icon-white"></i> Cancelar</button>
             </div>
         </div>
-    </div>
+    </form>
 </div>
