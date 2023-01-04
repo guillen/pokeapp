@@ -10,13 +10,13 @@
     </thead>
     <tbody>
         <tr *ngFor="let pokemon of pokemonList | search: searchString:'name'">
-            <td>{{pokemon.name}}</td>
+            <td class="pokemon-name-table">{{pokemon.name}}</td>
             <td class="text-center"><img [src]="pokemon.image" [alt]="pokemon.id + '-' + pokemon.name" width="30"></td>
             <td class="text-right">{{pokemon.attack}}</td>
             <td class="text-right">{{pokemon.defense}}</td>
             <td>
-                <button class="btn btn-link" (click)="showEditCard(pokemon)"><i class="icon icon-edit"></i></button>
-                <button class="btn btn-link" (click)="removePokemon(pokemon)"><i class="icon icon-delete"></i></button>
+                <button class="btn btn-link edit-btn" (click)="showEditCard(pokemon)"><i class="icon icon-edit"></i></button>
+                <button class="btn btn-link delete-btn" (click)="removePokemon(pokemon)"><i class="icon icon-delete"></i></button>
             </td>
         </tr>
     </tbody>

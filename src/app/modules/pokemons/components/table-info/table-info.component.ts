@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../../models/pokemon';
 import { CommunicationService } from '../../services/communication.service';
 import { PokemonRepositoryService } from '../../services/pokemon-repository.service';
-import { PokemonService } from '../../services/pokemon.service';
 
 @Component({
   selector: 'app-table-info',
@@ -15,7 +14,7 @@ export class TableInfoComponent implements OnInit {
 
   constructor(
     private _pokemonRepositoryService:PokemonRepositoryService,
-    private communicationService:CommunicationService,
+    private _communicationService:CommunicationService,
   ) {
     this.subscribeActions();
   }
@@ -29,15 +28,21 @@ export class TableInfoComponent implements OnInit {
   }
 
   showEditCard(pokemon:Pokemon) {
-    this.communicationService.showCreateUpdatePokemon({show: true, pokemon: pokemon});
+    this._communicationService.showCreateUpdatePokemon({show: true, pokemon: pokemon});
   }
 
-  removePokemon(pokemon:Pokemon) {
-    this._pokemonRepositoryService.removePokemon(pokemon.id);
+  async removePokemon(pokemon:Pokemon) {
+    await this._pokemonRepositoryService.removePokemon(pokemon.id);
+    this.makeActions();
   }
 
   subscribeActions() {
-    this.communicationService.updatePokemonListObservable.subscribe(() => this.loadTable());
-    this.communicationService.searchInTableObservable.subscribe(text => this.searchString = text);
+    this._communicationService.getSearchInTableObservable().subscribe(text => this.searchString = text);
+    this._communicationService.getUpdatePokemonListObservable().subscribe(_resp => this.loadTable());
+  }
+
+  makeActions() {
+    this._communicationService.showCreateUpdatePokemon({show: false});
+    this.loadTable();
   }
 }
