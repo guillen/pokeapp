@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../../models/pokemon';
+import { CommunicationService } from '../../services/communication.service';
 import { PokemonRepositoryService } from '../../services/pokemon-repository.service';
 import { PokemonService } from '../../services/pokemon.service';
 
@@ -11,7 +12,12 @@ import { PokemonService } from '../../services/pokemon.service';
 export class TableInfoComponent implements OnInit {
   pokemonList:Pokemon[] = [];
 
-  constructor(private _pokemonRepositoryService:PokemonRepositoryService) { }
+  constructor(
+    private _pokemonRepositoryService:PokemonRepositoryService,
+    private communicationService:CommunicationService,
+  ) {
+    this.subscribeActions();
+  }
 
   ngOnInit(): void {
     this.loadTable();
@@ -19,5 +25,13 @@ export class TableInfoComponent implements OnInit {
 
   loadTable() {
     this._pokemonRepositoryService.getTableData().subscribe(resp => this.pokemonList = resp);
+  }
+
+  showEditCard(pokemon:Pokemon) {
+    this.communicationService.showCreateUpdatePokemon({show: true, pokemon});
+  }
+
+  subscribeActions() {
+    this.communicationService.updatePokemonListObservable.subscribe(() => this.loadTable());
   }
 }

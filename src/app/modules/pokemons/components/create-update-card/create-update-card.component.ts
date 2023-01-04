@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Pokemon } from '../../models/pokemon';
+import { CommunicationService } from '../../services/communication.service';
 
 @Component({
   selector: 'app-create-update-card',
@@ -6,11 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-update-card.component.css']
 })
 export class CreateUpdateCardComponent implements OnInit {
-  actionName:string = 'Nuevo';
+  @Input() pokemon?:Pokemon;
 
-  constructor() { }
+  constructor(
+    private communicationService:CommunicationService,
+  ) { }
 
   ngOnInit(): void {
   }
 
+  hideCard() {
+    this.communicationService.showCreateUpdatePokemon({show: false});
+  }
 }

@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-title">
-        <h4 class="mt-1 mb-1">{{actionName}} Pokemon</h4>
+        <h4 class="mt-1 mb-1">{{pokemon ? 'Editar' : 'Nuevo'}} Pokemon</h4>
     </div>
     <div class="card-body">
         <div class="row">
@@ -37,7 +37,7 @@
         <div class="row mt-5">
             <div class="col-12 text-center">
                 <button class="btn btn-blue"><i class="icon icon-save icon-white"></i> Guardar</button> &nbsp;
-                <button class="btn btn-blue"><i class="icon icon-cancel icon-white"></i> Cancelar</button>
+                <button class="btn btn-blue" (click)="hideCard()"><i class="icon icon-cancel icon-white"></i> Cancelar</button>
             </div>
         </div>
     </div>
