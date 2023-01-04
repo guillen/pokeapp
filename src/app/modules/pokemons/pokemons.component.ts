@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Pokemon } from './models/pokemon';
 import { CommunicationService } from './services/communication.service';
 
 @Component({
@@ -12,7 +10,7 @@ export class PokemonsComponent implements OnInit {
   showEditUpdate:boolean = false;
 
   constructor(
-    private communicationService:CommunicationService,
+    private _communicationService:CommunicationService,
   ) {
     this.subscribeActions();
   }
@@ -21,10 +19,10 @@ export class PokemonsComponent implements OnInit {
   }
 
   showCreateCard() {
-    this.communicationService.showCreateUpdatePokemon({show: true});
+    this._communicationService.showCreateUpdatePokemon({show: true});
   }
 
   subscribeActions() {
-    this.communicationService.createUpdatePokemonObservable.subscribe(resp => this.showEditUpdate = resp.show);
+    this._communicationService.getCreateUpdatePokemonObservable().subscribe(resp => this.showEditUpdate = resp.show);
   }
 }

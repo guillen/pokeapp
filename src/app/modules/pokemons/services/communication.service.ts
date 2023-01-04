@@ -7,11 +7,11 @@ import { ShowPokemon } from '../interfaces/show-pokemon';
 })
 export class CommunicationService {
   private createUpdatePokemonSubject = new Subject<ShowPokemon>();
-  createUpdatePokemonObservable = this.createUpdatePokemonSubject.asObservable();
+  private createUpdatePokemonObservable = this.createUpdatePokemonSubject.asObservable();
   private updatePokemonListSubject = new Subject<void>();
-  updatePokemonListObservable = this.updatePokemonListSubject.asObservable();
+  private updatePokemonListObservable = this.updatePokemonListSubject.asObservable();
   private searchInTableSubject = new BehaviorSubject<string>('');
-  searchInTableObservable = this.searchInTableSubject.asObservable();
+  private searchInTableObservable = this.searchInTableSubject.asObservable();
 
   showCreateUpdatePokemon(action:ShowPokemon) {
     return this.createUpdatePokemonSubject.next(action);
@@ -23,5 +23,17 @@ export class CommunicationService {
 
   searchInTable(text:string) {
     this.searchInTableSubject.next(text);
+  }
+
+  getSearchInTableObservable() {
+    return this.searchInTableObservable;
+  }
+
+  getUpdatePokemonListObservable() {
+    return this.updatePokemonListObservable;
+  }
+
+  getCreateUpdatePokemonObservable() {
+    return this.createUpdatePokemonObservable;
   }
 }
