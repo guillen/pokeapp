@@ -25,7 +25,7 @@ describe('PokemonRepositoryService', () => {
     pokemonServiceSpy = TestBed.inject(PokemonService) as jasmine.SpyObj<PokemonService>;
   });
 
-  it('should be created', () => {
+  it('Should be created', () => {
     expect(service).toBeTruthy();
   });
 

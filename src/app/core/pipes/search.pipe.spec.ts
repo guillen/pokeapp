@@ -18,11 +18,11 @@ describe('SearchPipe', () => {
     ];
   }
 
-  it('create an instance', () => {
+  it('Should create an instance', () => {
     expect(pipe).toBeTruthy();
   });
 
-  it('Filter data correctly using an array of pokemons', () => {
+  it('Should filter data correctly using an array of pokemons', () => {
     let bulbasaur = getPokemon('Bulbasaur');
     let ivysaur = getPokemon('Ivysaur');
     let venasaur = getPokemon('Venasaur');
@@ -38,7 +38,7 @@ describe('SearchPipe', () => {
     expect(resultImg).toEqual([mewtwo]);
   });
 
-  it('Filter data correctly using an array of any object', () => {
+  it('Should filter data correctly using an array of any object', () => {
     let data:RandomArray[] = getRandomArray();
     let resultOther = pipe.transform(data, 'other', 'otherField');
 
@@ -48,20 +48,20 @@ describe('SearchPipe', () => {
     ]);
   });
 
-  it('Empty array when data length is 0', () => {
+  it('Should return empty array when data length is 0', () => {
     let result = pipe.transform([], 'x', 'y');
 
     expect(result).toEqual([]);
   });
 
-  it('Can filter with field type different than a string', () => {
+  it('Should filter with field type different than a string', () => {
     let data = getRandomArray();
     let result = pipe.transform(data, '1', 'age');
 
     expect(result).toEqual(data);
   });
 
-  it('Return original array when value or field are empty', () => {
+  it('Should return original array when value or field are empty', () => {
     let nullable:string;
     let data = getRandomArray();
     let resultEmptyField = pipe.transform(data, 'value', nullable!);

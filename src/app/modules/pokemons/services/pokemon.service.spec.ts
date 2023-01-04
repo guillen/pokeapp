@@ -14,7 +14,7 @@ describe('PokemonService', () => {
     service = TestBed.inject(PokemonService);
   });
 
-  it('should be created', () => {
+  it('Should be created', () => {
     expect(service).toBeTruthy();
   });
 });

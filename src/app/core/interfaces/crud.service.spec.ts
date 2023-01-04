@@ -29,18 +29,18 @@ describe('CrudService', () => {
     httpController = TestBed.inject(HttpTestingController);
   });
 
-  it('should be created', () => {
+  it('Should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it('HttpClient should call get method (all values)', () => {
+  it('Should call get method (all values)', () => {
     service.get().subscribe(_resp => {});
 
     const req = httpController.expectOne(`${URL_NAMES.POKEMON}?idAuthor=${USER_DATA.idAuthor}`);
     expect(req.request.method).toEqual('GET');
   });
 
-  it('HttpClient should get post method (one value)', () => {
+  it('Should get post method (one value)', () => {
     let value = 1;
 
     service.getOne(value).subscribe(_resp => {});
@@ -49,7 +49,7 @@ describe('CrudService', () => {
     expect(req.request.method).toEqual('GET');
   });
 
-  it('HttpClient should call post method', () => {
+  it('Should call post method', () => {
     let dto:FakeModelDTO = {
       age: 10, name: 'Joe Mama',
     };
@@ -61,7 +61,7 @@ describe('CrudService', () => {
     expect(req.request.body).toBe(dto);
   });
 
-  it('HttpClient should call put method', () => {
+  it('Should call put method', () => {
     let value = 1;
     let dto:FakeModelDTO = {
       age: 10, name: 'Joe Mama',
@@ -74,7 +74,7 @@ describe('CrudService', () => {
     expect(req.request.body).toBe(dto);
   });
 
-  it('HttpClient should call put method', () => {
+  it('Should call put method', () => {
     let value = 1;
 
     service.delete(value).subscribe(_resp => {});
