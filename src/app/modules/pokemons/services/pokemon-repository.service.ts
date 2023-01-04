@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DEFAULT_VALUES } from 'src/app/core/constants/default-values';
 import { USER_DATA } from 'src/app/core/constants/user-data';
 import { PokemonDTO } from '../dto/request/PokemonDTO';
 import { Pokemon } from '../models/pokemon';
@@ -24,11 +25,11 @@ export class PokemonRepositoryService {
     return {
       attack: pokemon.attack,
       defense: pokemon.defense,
-      hp: 100,
+      hp: DEFAULT_VALUES.hp,
       image: pokemon.image,
       idAuthor: USER_DATA.idAuthor,
       name: pokemon.name,
-      type: 'NA',
+      type: DEFAULT_VALUES.type,
     }
   }
 

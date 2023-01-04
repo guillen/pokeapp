@@ -1,4 +1,5 @@
 import { Pokemon } from 'src/app/modules/pokemons/models/pokemon';
+import { getPokemon } from 'src/app/testing/helpers/utl';
 import { SearchPipe } from './search.pipe';
 
 interface RandomArray {
@@ -8,16 +9,6 @@ interface RandomArray {
 
 describe('SearchPipe', () => {
   const pipe = new SearchPipe();
-
-  function getRamdomPokemon(name:string, image:string = `https://imgpoke.mon/${name}.png`) : Pokemon {
-    return {
-      id: 0,
-      image,
-      name,
-      attack: Math.round(Math.random() * 100),
-      defense: Math.round(Math.random() * 100),
-    };
-  }
 
   function getRandomArray() : RandomArray[] {
     return [
@@ -32,10 +23,10 @@ describe('SearchPipe', () => {
   });
 
   it('Filter data correctly using an array of pokemons', () => {
-    let bulbasaur = getRamdomPokemon('Bulbasaur');
-    let ivysaur = getRamdomPokemon('Ivysaur');
-    let venasaur = getRamdomPokemon('Venasaur');
-    let mewtwo = getRamdomPokemon('Mewtwo');
+    let bulbasaur = getPokemon('Bulbasaur');
+    let ivysaur = getPokemon('Ivysaur');
+    let venasaur = getPokemon('Venasaur');
+    let mewtwo = getPokemon('Mewtwo');
 
     let pokemons:Pokemon[] = [
       bulbasaur, ivysaur, venasaur, mewtwo,
