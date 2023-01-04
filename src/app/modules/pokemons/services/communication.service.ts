@@ -6,10 +6,13 @@ import { ShowPokemon } from '../interfaces/show-pokemon';
   providedIn: 'root'
 })
 export class CommunicationService {
+  //notify you want to show creation/update panel card
   private createUpdatePokemonSubject = new Subject<ShowPokemon>();
   private createUpdatePokemonObservable = this.createUpdatePokemonSubject.asObservable();
+  //notify you want to 
   private updatePokemonListSubject = new Subject<void>();
   private updatePokemonListObservable = this.updatePokemonListSubject.asObservable();
+  //notify you want to filter table with a string
   private searchInTableSubject = new BehaviorSubject<string>('');
   private searchInTableObservable = this.searchInTableSubject.asObservable();
 

@@ -43,6 +43,10 @@ export class CreateUpdateCardComponent {
   }
 
   async onSubmit() {
+    if(this.pokemonForm.status == 'INVALID') {
+      return;
+    }
+
     if (this.pokemon) {
       this.pokemon.name = this.pokemonForm.controls['name'].value;
       this.pokemon.image = this.pokemonForm.controls['image'].value;

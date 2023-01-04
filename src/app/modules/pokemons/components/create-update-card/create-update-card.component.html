@@ -9,11 +9,11 @@
                     <tbody>
                         <tr>
                             <td><label for="">Nombre: </label></td>
-                            <td><input type="text" class="input-field" formControlName="name"></td>
+                            <td><input id="pokemon-name" type="text" class="input-field" formControlName="name"></td>
                         </tr>
                         <tr>
                             <td><label for="">Imagen: </label></td>
-                            <td><input type="text" class="input-field" formControlName="image"></td>
+                            <td><input id="pokemon-image" type="text" class="input-field" formControlName="image"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -23,12 +23,12 @@
                     <tbody>
                         <tr>
                             <td><label for="">Ataque: </label></td>
-                            <td><input type="range" class="range-width" formControlName="attack" min="0" max="100"></td>
+                            <td><input id="pokemon-attack" type="range" class="range-width" formControlName="attack" min="0" max="100"></td>
                             <td>{{ pokemonForm.controls['attack'].value }}</td>
                         </tr>
                         <tr>
                             <td><label for="">Defensa: </label></td>
-                            <td><input type="range" class="range-width" formControlName="defense" min="0" max="100"></td>
+                            <td><input id="pokemon-defense" type="range" class="range-width" formControlName="defense" min="0" max="100"></td>
                             <td>{{ pokemonForm.controls['defense'].value }}</td>
                         </tr>
                     </tbody>
