@@ -7,7 +7,7 @@ import { USER_DATA } from "../constants/user-data";
 @Injectable({
   providedIn: 'root'
 })
-export class CrudClass<DTO, T> {
+export class CrudService<DTO, T> {
   idAuthor:number = USER_DATA.idAuthor;
   url:string = URL_NAMES.POKEMON;
 
@@ -18,18 +18,18 @@ export class CrudClass<DTO, T> {
   }
 
   getOne(id:number):Observable<T> {
-    return this.http.get<T>(`${this.url}/${id}`, {params: {idUsuario: this.idAuthor}});
+    return this.http.get<T>(`${this.url}/${id}`, {params: {idAuthor: this.idAuthor}});
   }
 
   post(dto:DTO):Observable<T> {
-    return this.http.post<T>(this.url, dto);
+    return this.http.post<T>(this.url, dto, {params: {idAuthor: this.idAuthor}});
   };
 
   put(dto:DTO, id:number):Observable<T> {
-    return this.http.put<T>(`${this.url}/${id}`, dto);
+    return this.http.put<T>(`${this.url}/${id}`, dto, {params: {idAuthor: this.idAuthor}});
   };
 
   delete(id:number):Observable<void> {
-    return this.http.delete<void>(`${this.url}/${id}`);
+    return this.http.delete<void>(`${this.url}/${id}`, {params: {idAuthor: this.idAuthor}});
   };
 }
