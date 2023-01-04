@@ -1,4 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
 
 import { CreateUpdateCardComponent } from './create-update-card.component';
 
@@ -8,7 +11,9 @@ describe('CreateUpdateCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateUpdateCardComponent ]
+      imports: [ HttpClientModule, HttpClientTestingModule ],
+      declarations: [ CreateUpdateCardComponent ],
+      providers: [ FormBuilder ],
     })
     .compileComponents();
 

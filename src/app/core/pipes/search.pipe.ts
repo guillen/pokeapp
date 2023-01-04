@@ -10,7 +10,7 @@ export class SearchPipe implements PipeTransform {
       return [];
     }
 
-    if (!value) {
+    if (!value || !field) {
       return pokemons;
     }
 
