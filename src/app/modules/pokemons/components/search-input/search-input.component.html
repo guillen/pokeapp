@@ -1,4 +1,4 @@
-<div class="input-group">
+<form class="input-group" >
     <i class="icon icon-search"></i>
-    <input type="text" placeholder="Buscar" class="input-field">
-</div>
+    <input type="text" placeholder="Buscar" class="input-field" (keyup)="search(text)" #text>
+</form>

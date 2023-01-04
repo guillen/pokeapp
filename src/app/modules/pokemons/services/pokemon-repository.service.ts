@@ -33,16 +33,19 @@ export class PokemonRepositoryService {
   }
 
   createPokemon(pokemon:Pokemon) {
-    this._pokemonService.post(this.getDTO(pokemon)).subscribe(resp => {
-      this.communicationService.showCreateUpdatePokemon({show: false});
-      this.communicationService.updatePokemonList();
-    });
+    this._pokemonService.post(this.getDTO(pokemon)).subscribe(resp => this.makeActions());
   }
 
   updatePokemon(pokemon:Pokemon) {
-    this._pokemonService.put(this.getDTO(pokemon), pokemon.id).subscribe(resp => {
-      this.communicationService.showCreateUpdatePokemon({show: false});
-      this.communicationService.updatePokemonList();
-    });
+    this._pokemonService.put(this.getDTO(pokemon), pokemon.id).subscribe(resp => this.makeActions());
+  }
+
+  removePokemon(id:number) {
+    this._pokemonService.delete(id).subscribe(resp => this.makeActions());
+  }
+
+  makeActions() {
+    this.communicationService.showCreateUpdatePokemon({show: false});
+    this.communicationService.updatePokemonList();
   }
 }

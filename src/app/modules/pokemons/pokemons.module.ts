@@ -7,6 +7,7 @@ import { SearchInputComponent } from './components/search-input/search-input.com
 import { TableInfoComponent } from './components/table-info/table-info.component';
 import { CreateUpdateCardComponent } from './components/create-update-card/create-update-card.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SearchPipe } from 'src/app/core/pipes/search.pipe';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     PokemonsComponent,
     SearchInputComponent,
     TableInfoComponent,
-    CreateUpdateCardComponent
+    CreateUpdateCardComponent,
+    SearchPipe,
   ],
   imports: [
     CommonModule,

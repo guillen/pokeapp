@@ -11,6 +11,7 @@ import { PokemonService } from '../../services/pokemon.service';
 })
 export class TableInfoComponent implements OnInit {
   pokemonList:Pokemon[] = [];
+  searchString = '';
 
   constructor(
     private _pokemonRepositoryService:PokemonRepositoryService,
@@ -31,7 +32,12 @@ export class TableInfoComponent implements OnInit {
     this.communicationService.showCreateUpdatePokemon({show: true, pokemon: pokemon});
   }
 
+  removePokemon(pokemon:Pokemon) {
+    this._pokemonRepositoryService.removePokemon(pokemon.id);
+  }
+
   subscribeActions() {
     this.communicationService.updatePokemonListObservable.subscribe(() => this.loadTable());
+    this.communicationService.searchInTableObservable.subscribe(text => this.searchString = text);
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { ShowPokemon } from '../interfaces/show-pokemon';
 
 @Injectable({
@@ -10,8 +10,8 @@ export class CommunicationService {
   createUpdatePokemonObservable = this.createUpdatePokemonSubject.asObservable();
   private updatePokemonListSubject = new Subject<void>();
   updatePokemonListObservable = this.updatePokemonListSubject.asObservable();
-
-  constructor() { }
+  private searchInTableSubject = new BehaviorSubject<string>('');
+  searchInTableObservable = this.searchInTableSubject.asObservable();
 
   showCreateUpdatePokemon(action:ShowPokemon) {
     return this.createUpdatePokemonSubject.next(action);
@@ -19,5 +19,9 @@ export class CommunicationService {
 
   updatePokemonList() {
     return this.updatePokemonListSubject.next();
+  }
+
+  searchInTable(text:string) {
+    this.searchInTableSubject.next(text);
   }
 }

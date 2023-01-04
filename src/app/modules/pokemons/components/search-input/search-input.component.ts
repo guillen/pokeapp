@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { CommunicationService } from '../../services/communication.service';
 
 @Component({
   selector: 'app-search-input',
   templateUrl: './search-input.component.html',
   styleUrls: ['./search-input.component.css']
 })
-export class SearchInputComponent implements OnInit {
+export class SearchInputComponent {
 
-  constructor() { }
+  constructor(
+    private communicationService:CommunicationService,
+  ) { }
 
-  ngOnInit(): void {
+  search(event:any) {
+    this.communicationService.searchInTable(event.value);
   }
 
 }

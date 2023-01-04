@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Pokemon } from '../../models/pokemon';
 import { CommunicationService } from '../../services/communication.service';
@@ -9,7 +9,7 @@ import { PokemonRepositoryService } from '../../services/pokemon-repository.serv
   templateUrl: './create-update-card.component.html',
   styleUrls: ['./create-update-card.component.css']
 })
-export class CreateUpdateCardComponent implements OnInit {
+export class CreateUpdateCardComponent {
   pokemon?:Pokemon;
   pokemonForm!:FormGroup;
 
@@ -29,8 +29,6 @@ export class CreateUpdateCardComponent implements OnInit {
       attack: [50, [Validators.required, Validators.min(0), Validators.max(100)]],
       defense: [50, [Validators.required, Validators.min(0), Validators.max(100)]],
     });
-
-    console.log(this.pokemonForm);
   }
 
   updateForm() {
@@ -38,11 +36,6 @@ export class CreateUpdateCardComponent implements OnInit {
     this.pokemonForm.controls['image'].patchValue(this.pokemon?.image);
     this.pokemonForm.controls['attack'].patchValue(this.pokemon ? this.pokemon.attack : 50);
     this.pokemonForm.controls['defense'].patchValue(this.pokemon ? this.pokemon.defense : 50);
-
-    console.log(this.pokemonForm);
-  }
-
-  ngOnInit(): void {
   }
 
   hideCard() {
