@@ -42,13 +42,14 @@ export class CreateUpdateCardComponent {
     this._communicationService.showCreateUpdatePokemon({show: false});
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.pokemon) {
       this.pokemon.name = this.pokemonForm.controls['name'].value;
       this.pokemon.image = this.pokemonForm.controls['image'].value;
       this.pokemon.attack = this.pokemonForm.controls['attack'].value;
       this.pokemon.defense = this.pokemonForm.controls['defense'].value;
-      this._pokemonRepositoryService.updatePokemon(this.pokemon);
+      await this._pokemonRepositoryService.updatePokemon(this.pokemon);
+      this.makeActions()
     }  else {
       this.pokemon = {
         id: 0,
@@ -57,14 +58,20 @@ export class CreateUpdateCardComponent {
         image: this.pokemonForm.controls['image'].value,
         name: this.pokemonForm.controls['name'].value,
       };
-      this._pokemonRepositoryService.createPokemon(this.pokemon);
+      await this._pokemonRepositoryService.createPokemon(this.pokemon);
+      this.makeActions()
     }
   }
 
   subscribeActions() {
-    this._communicationService.createUpdatePokemonObservable.subscribe(resp => {
+    this._communicationService.getCreateUpdatePokemonObservable().subscribe(resp => {
       this.pokemon = resp.pokemon;
       this.updateForm();
     });
+  }
+
+  makeActions() {
+    this._communicationService.showCreateUpdatePokemon({show: false});
+    this._communicationService.updatePokemonList();
   }
 }

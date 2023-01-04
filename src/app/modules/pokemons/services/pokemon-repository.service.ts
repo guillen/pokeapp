@@ -4,7 +4,6 @@ import { DEFAULT_VALUES } from 'src/app/core/constants/default-values';
 import { USER_DATA } from 'src/app/core/constants/user-data';
 import { PokemonDTO } from '../dto/request/PokemonDTO';
 import { Pokemon } from '../models/pokemon';
-import { CommunicationService } from './communication.service';
 import { PokemonService } from './pokemon.service';
 
 @Injectable({
@@ -14,7 +13,6 @@ export class PokemonRepositoryService {
 
   constructor(
     private _pokemonService:PokemonService,
-    private communicationService:CommunicationService,
   ) { }
 
   getTableData() : Observable<Pokemon[]> {
@@ -33,20 +31,21 @@ export class PokemonRepositoryService {
     }
   }
 
-  createPokemon(pokemon:Pokemon) {
-    this._pokemonService.post(this.getDTO(pokemon)).subscribe(resp => this.makeActions());
+  createPokemon(pokemon:Pokemon) : Promise<Pokemon> {
+    return new Promise<Pokemon>((resolve, reject) => {
+      this._pokemonService.post(this.getDTO(pokemon)).subscribe(resolve);
+    });
   }
 
-  updatePokemon(pokemon:Pokemon) {
-    this._pokemonService.put(this.getDTO(pokemon), pokemon.id).subscribe(resp => this.makeActions());
+  updatePokemon(pokemon:Pokemon) : Promise<Pokemon> {
+    return new Promise<Pokemon>((resolve, reject) => {
+      this._pokemonService.put(this.getDTO(pokemon), pokemon.id).subscribe(resolve);
+    });
   }
 
-  removePokemon(id:number) {
-    this._pokemonService.delete(id).subscribe(resp => this.makeActions());
-  }
-
-  makeActions() {
-    this.communicationService.showCreateUpdatePokemon({show: false});
-    this.communicationService.updatePokemonList();
+  removePokemon(id:number) : Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      this._pokemonService.delete(id).subscribe(resolve);
+    });
   }
 }
